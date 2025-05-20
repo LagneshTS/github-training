@@ -8,4 +8,4 @@
 
 # Hasta la vista
 
-# Good Bye
+# adiós
