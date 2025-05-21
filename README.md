@@ -6,6 +6,8 @@
 
 # Good Morning
 
+# Good Afternoon
+
 # Howdy
 
 # Hola Amigo
