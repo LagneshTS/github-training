@@ -19,3 +19,7 @@
 # auf Wiedersehen
 
 # au revoir
+
+# Bye Bye
+
+# Good Bye
