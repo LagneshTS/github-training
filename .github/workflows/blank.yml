@@ -20,7 +20,7 @@ jobs:
       - name: Checkout another repository
         uses: actions/checkout@v2
         with:
-          repository: PSJH-Dev/Devops-test2
+          repository: LagneshTS/github-training-2
           token: ${{ secrets.GH_PAT }}
           path: other-repo
 
