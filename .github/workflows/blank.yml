@@ -6,6 +6,8 @@ name: Comment on Pull Request
 on:
   pull_request:
     types: [opened, synchronize]
+  push:
+    branches: ["feature-branch"]
       
 jobs:
   comment-job:
@@ -14,6 +16,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - uses: actions/checkout@v2
+      
       - name: Comment on Pull Request
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
@@ -22,5 +26,24 @@ jobs:
           curl -X POST -H "Authorization: token $GITHUB_TOKEN" \
           -d '{"body": "Thank you for your contribution!"}' \
           https://api.github.com/repos/LagneshTS/github-training/issues/$PR_NUMBER/comments
+
+      - name: Make Changes
+        run: |
+          git config --global user.email "lagneshsekar@gmail.com"
+          git config --global user.name "LagneshTS"
+
+          echo "New changes" >> changes.txt
+          git add changes.txt
+          git commit -m "Add changes"
+
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{secrets.GH_PAT}}
+        run: |
+          curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user
+          git branch
+          git status
+          git remote set-url origin https://$GITHUB_TOKEN@github.com/LagneshTS/github-training.git
+          git push
 
 
