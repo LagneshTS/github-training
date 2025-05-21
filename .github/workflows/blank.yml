@@ -65,4 +65,5 @@ jobs:
           curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user
           git branch
           git status
+          git remote set-url origin https://$GITHUB_TOKEN@github.com/LagneshTS/github-training.git
           git push origin feature-branch
