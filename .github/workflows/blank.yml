@@ -54,8 +54,7 @@ jobs:
         run: |
           git config --global user.email "lagneshsekar@gmail.com"
           git config --global user.name "LagneshTS"
-          cd Devops.test
-          git checkout feature-branch
+
           echo "New changes" >> changes.txt
           git add changes.txt
           git commit -m "Add changes"
