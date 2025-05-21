@@ -30,7 +30,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v3.9.1
 
       # Runs a single command using the runners shell
@@ -48,4 +48,18 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GH_PAT}}
         run: |
           curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user
-          
+
+      - name: Make Changes
+        run: |
+          git config --global user.email "lagneshsekar@gmail.com"
+          git config --global user.name "LagneshTS"
+
+          echo "New changes" >> changes.txt
+          git add changes.txt
+          git commit -m "Add changes"
+
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{secrets.GH_PAT}}
+        run: |
+          git push origin feature-branch
