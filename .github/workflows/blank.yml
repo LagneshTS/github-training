@@ -4,8 +4,7 @@ name: Run another repo's script
 
 # Controls when the workflow will run
 on:
-  push:
-    branches: ["main"]
+  workflow_call:
       
 jobs:
   script-run:
@@ -17,13 +16,6 @@ jobs:
       - name: Checkout this repository
         uses: actions/checkout@v2
 
-      - name: Checkout another repository
-        uses: actions/checkout@v2
-        with:
-          repository: LagneshTS/github-training-2
-          token: ${{ secrets.GH_PAT }}
-          path: other-repo
-
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -31,6 +23,5 @@ jobs:
 
       - name: Run Python script
         run: |
-          cd other-repo
           python Script.py
 
