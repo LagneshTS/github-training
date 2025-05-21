@@ -49,7 +49,6 @@ jobs:
         run: |
           curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user
 
-
       - name: Make Changes
         run: |
           git config --global user.email "lagneshsekar@gmail.com"
